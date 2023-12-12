@@ -56,6 +56,12 @@ func TestSmsProvider(t *testing.T) {
 					ApiKey: "test_api_key",
 					Sender: "test_sender",
 				},
+				AliyunSms: conf.AliyunSmsProviderConfiguration{
+					AccessKeyId:     "test_access_key_id",
+					AccessKeySecret: "test_access_key_secret",
+					SignName:        "test_sign_name",
+					TemplateCode:    "test_template_code",
+				},
 			},
 		},
 	}
@@ -284,4 +290,8 @@ func (ts *SmsProviderTestSuite) TestTwilioVerifySendSms() {
 			require.Equal(ts.T(), c.ExpectedError, err)
 		})
 	}
+}
+
+func (ts *SmsProviderTestSuite) TestAliyunSmsSendSms() {
+	// 目前没有用 RestAPI 的方式，所以暂时不测试
 }

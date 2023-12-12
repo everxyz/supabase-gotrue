@@ -341,6 +341,7 @@ type SmsProviderConfiguration struct {
 	Messagebird  MessagebirdProviderConfiguration  `json:"messagebird"`
 	Textlocal    TextlocalProviderConfiguration    `json:"textlocal"`
 	Vonage       VonageProviderConfiguration       `json:"vonage"`
+	AliyunSms    AliyunSmsProviderConfiguration    `json:"aliyun_sms" split_words:"true"`
 }
 
 func (c *SmsProviderConfiguration) GetTestOTP(phone string, now time.Time) (string, bool) {
@@ -379,6 +380,13 @@ type VonageProviderConfiguration struct {
 	ApiKey    string `json:"api_key" split_words:"true"`
 	ApiSecret string `json:"api_secret" split_words:"true"`
 	From      string `json:"from" split_words:"true"`
+}
+
+type AliyunSmsProviderConfiguration struct {
+	AccessKeyId     string `json:"access_key_id" split_words:"true"`
+	AccessKeySecret string `json:"access_key_secret" split_words:"true"`
+	SignName        string `json:"sign_name" split_words:"true"`
+	TemplateCode    string `json:"template_code" split_words:"true"`
 }
 
 type CaptchaConfiguration struct {
@@ -714,6 +722,22 @@ func (o *OAuthProviderConfiguration) ValidateOAuth() error {
 	}
 	if o.RedirectURI == "" {
 		return errors.New("missing redirect URI")
+	}
+	return nil
+}
+
+func (t *AliyunSmsProviderConfiguration) Validate() error {
+	if t.AccessKeyId == "" {
+		return errors.New("missing Aliyun access key ID")
+	}
+	if t.AccessKeySecret == "" {
+		return errors.New("missing Aliyun access key secret")
+	}
+	if t.SignName == "" {
+		return errors.New("missing Aliyun sign name")
+	}
+	if t.TemplateCode == "" {
+		return errors.New("missing Aliyun template code")
 	}
 	return nil
 }
