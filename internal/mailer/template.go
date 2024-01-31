@@ -1,7 +1,6 @@
 package mailer
 
 import (
-	"encoding/base64"
 	"fmt"
 	"net/url"
 	"strings"
@@ -37,31 +36,31 @@ func encodeRedirectURL(referrerURL string) string {
 const defaultInviteMail = `<h2>You have been invited</h2>
 
 <p>You have been invited to create a user on {{ .SiteURL }}. Follow this link to accept the invite:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Accept the invite</a></p>
+<p><a href="{{ .ConfirmationURL }}">Accept the invite</a></p>
 `
 
 const defaultConfirmationMail = `<h2>Confirm your email</h2>
 
 <p>Follow this link to confirm your email:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Confirm your email address</a></p>
+<p><a href="{{ .ConfirmationURL }}">Confirm your email address</a></p>
 `
 
 const defaultRecoveryMail = `<h2>Reset password</h2>
 
 <p>Follow this link to reset the password for your user:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Reset password</a></p>
+<p><a href="{{ .ConfirmationURL }}">Reset password</a></p>
 `
 
 const defaultMagicLinkMail = `<h2>Magic Link</h2>
 
 <p>Follow this link to login:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Log In</a></p>
+<p><a href="{{ .ConfirmationURL }}">Log In</a></p>
 `
 
 const defaultEmailChangeMail = `<h2>Confirm email address change</h2>
 
 <p>Follow this link to confirm the update of your email address from {{ .Email }} to {{ .NewEmail }}:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Change email address</a></p>
+<p><a href="{{ .ConfirmationURL }}">Change email address</a></p>
 `
 
 const defaultReauthenticateMail = `<h2>Confirm reauthentication</h2>
@@ -88,7 +87,7 @@ func (m *TemplateMailer) InviteMail(user *models.User, otp, referrerURL string, 
 
 	data := map[string]interface{}{
 		"SiteURL":         m.Config.SiteURL,
-		"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
+		"ConfirmationURL": externalURL.ResolveReference(path).String(),
 		"Email":           user.Email,
 		"Token":           otp,
 		"TokenHash":       user.ConfirmationToken,
@@ -118,7 +117,7 @@ func (m *TemplateMailer) ConfirmationMail(user *models.User, otp, referrerURL st
 
 	data := map[string]interface{}{
 		"SiteURL":         m.Config.SiteURL,
-		"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
+		"ConfirmationURL": externalURL.ResolveReference(path).String(),
 		"Email":           user.Email,
 		"Token":           otp,
 		"TokenHash":       user.ConfirmationToken,
@@ -199,7 +198,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 		go func(address, token, tokenHash, template string) {
 			data := map[string]interface{}{
 				"SiteURL":         m.Config.SiteURL,
-				"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
+				"ConfirmationURL": externalURL.ResolveReference(path).String(),
 				"Email":           user.GetEmail(),
 				"NewEmail":        user.EmailChange,
 				"Token":           token,
@@ -240,7 +239,7 @@ func (m *TemplateMailer) RecoveryMail(user *models.User, otp, referrerURL string
 	}
 	data := map[string]interface{}{
 		"SiteURL":         m.Config.SiteURL,
-		"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
+		"ConfirmationURL": externalURL.ResolveReference(path).String(),
 		"Email":           user.Email,
 		"Token":           otp,
 		"TokenHash":       user.RecoveryToken,
@@ -270,7 +269,7 @@ func (m *TemplateMailer) MagicLinkMail(user *models.User, otp, referrerURL strin
 
 	data := map[string]interface{}{
 		"SiteURL":         m.Config.SiteURL,
-		"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
+		"ConfirmationURL": externalURL.ResolveReference(path).String(),
 		"Email":           user.Email,
 		"Token":           otp,
 		"TokenHash":       user.RecoveryToken,
