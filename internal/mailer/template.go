@@ -1,6 +1,7 @@
 package mailer
 
 import (
+	"encoding/base64"
 	"fmt"
 	"net/url"
 	"strings"
@@ -87,7 +88,7 @@ func (m *TemplateMailer) InviteMail(user *models.User, otp, referrerURL string, 
 
 	data := map[string]interface{}{
 		"SiteURL":         m.Config.SiteURL,
-		"ConfirmationURL": externalURL.ResolveReference(path).String(),
+		"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
 		"Email":           user.Email,
 		"Token":           otp,
 		"TokenHash":       user.ConfirmationToken,
@@ -117,7 +118,7 @@ func (m *TemplateMailer) ConfirmationMail(user *models.User, otp, referrerURL st
 
 	data := map[string]interface{}{
 		"SiteURL":         m.Config.SiteURL,
-		"ConfirmationURL": externalURL.ResolveReference(path).String(),
+		"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
 		"Email":           user.Email,
 		"Token":           otp,
 		"TokenHash":       user.ConfirmationToken,
@@ -198,7 +199,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 		go func(address, token, tokenHash, template string) {
 			data := map[string]interface{}{
 				"SiteURL":         m.Config.SiteURL,
-				"ConfirmationURL": externalURL.ResolveReference(path).String(),
+				"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
 				"Email":           user.GetEmail(),
 				"NewEmail":        user.EmailChange,
 				"Token":           token,
@@ -239,7 +240,7 @@ func (m *TemplateMailer) RecoveryMail(user *models.User, otp, referrerURL string
 	}
 	data := map[string]interface{}{
 		"SiteURL":         m.Config.SiteURL,
-		"ConfirmationURL": externalURL.ResolveReference(path).String(),
+		"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
 		"Email":           user.Email,
 		"Token":           otp,
 		"TokenHash":       user.RecoveryToken,
@@ -269,7 +270,7 @@ func (m *TemplateMailer) MagicLinkMail(user *models.User, otp, referrerURL strin
 
 	data := map[string]interface{}{
 		"SiteURL":         m.Config.SiteURL,
-		"ConfirmationURL": externalURL.ResolveReference(path).String(),
+		"ConfirmationURL": base64.StdEncoding.EncodeToString([]byte(externalURL.ResolveReference(path).String())),
 		"Email":           user.Email,
 		"Token":           otp,
 		"TokenHash":       user.RecoveryToken,
