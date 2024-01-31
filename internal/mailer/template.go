@@ -36,31 +36,31 @@ func encodeRedirectURL(referrerURL string) string {
 const defaultInviteMail = `<h2>You have been invited</h2>
 
 <p>You have been invited to create a user on {{ .SiteURL }}. Follow this link to accept the invite:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}">Accept the invite</a></p>
+<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Accept the invite</a></p>
 `
 
 const defaultConfirmationMail = `<h2>Confirm your email</h2>
 
 <p>Follow this link to confirm your email:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}">Confirm your email address</a></p>
+<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Confirm your email address</a></p>
 `
 
 const defaultRecoveryMail = `<h2>Reset password</h2>
 
 <p>Follow this link to reset the password for your user:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}">Reset password</a></p>
+<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Reset password</a></p>
 `
 
 const defaultMagicLinkMail = `<h2>Magic Link</h2>
 
 <p>Follow this link to login:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}">Log In</a></p>
+<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Log In</a></p>
 `
 
 const defaultEmailChangeMail = `<h2>Confirm email address change</h2>
 
 <p>Follow this link to confirm the update of your email address from {{ .Email }} to {{ .NewEmail }}:</p>
-<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}">Change email address</a></p>
+<p><a href="{{ .SiteURL }}/signin/email/confirm-link?confirmation_url={{ .ConfirmationURL }}&token={{ .Token }}">Change email address</a></p>
 `
 
 const defaultReauthenticateMail = `<h2>Confirm reauthentication</h2>
