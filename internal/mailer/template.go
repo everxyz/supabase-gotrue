@@ -33,39 +33,59 @@ func encodeRedirectURL(referrerURL string) string {
 	return referrerURL
 }
 
-const defaultInviteMail = `<h2>You have been invited</h2>
+const defaultInviteMail = `<h2>You have been invited to EverCraft</h2>
 
 <p>You have been invited to create a user on {{ .SiteURL }}. Follow this link to accept the invite:</p>
 <p><a href="{{ .ConfirmationURL }}">Accept the invite</a></p>
+
+<br />
+<p><a href="{{ .SiteURL }}">evercraft.ai</a>, a version control tool<br/>easier than ever for engineers.</p>
 `
 
 const defaultConfirmationMail = `<h2>Confirm your email</h2>
 
-<p>Follow this link to confirm your email:</p>
-<p><a href="{{ .ConfirmationURL }}">Confirm your email address</a></p>
+<p><a href="{{ .ConfirmationURL }}">Click here to confirm your email address</a></p>
+
+<p>If you didn't request a confirm, don't worry. You can safely ignore this email.</p>
+<br />
+<p><a href="{{ .SiteURL }}">evercraft.ai</a>, a version control tool<br/>easier than ever for engineers.</p>
 `
 
-const defaultRecoveryMail = `<h2>Reset password</h2>
+const defaultRecoveryMail = `<h2>Reset your EverCraft password</h2>
 
-<p>Follow this link to reset the password for your user:</p>
-<p><a href="{{ .ConfirmationURL }}">Reset password</a></p>
+<p><a href="{{ .ConfirmationURL }}">Click here to reset your password</a></p>
+
+<p>If you didn't request a reset, don't worry. You can safely ignore this email.</p>
+<br />
+<p><a href="{{ .SiteURL }}">evercraft.ai</a>, a version control tool<br/>easier than ever for engineers.</p>
 `
 
-const defaultMagicLinkMail = `<h2>Magic Link</h2>
+const defaultMagicLinkMail = `<h2>Magic Link for your EverCraft account</h2>
 
-<p>Follow this link to login:</p>
 <p><a href="{{ .ConfirmationURL }}">Log In</a></p>
+
+<p>If you didn't request a magic link, don't worry. You can safely ignore this email.</p>
+<br />
+<p><a href="{{ .SiteURL }}">evercraft.ai</a>, a version control tool<br/>easier than ever for engineers.</p>
 `
 
 const defaultEmailChangeMail = `<h2>Confirm email address change</h2>
 
-<p>Follow this link to confirm the update of your email address from {{ .Email }} to {{ .NewEmail }}:</p>
-<p><a href="{{ .ConfirmationURL }}">Change email address</a></p>
+<p><a href="{{ .ConfirmationURL }}">Click here to change email address</a></p>
+
+<p>If you didn't request a email change, don't worry. You can safely ignore this email.</p>
+<br />
+<p><a href="{{ .SiteURL }}">evercraft.ai</a>, a version control tool<br/>easier than ever for engineers.</p>
 `
 
 const defaultReauthenticateMail = `<h2>Confirm reauthentication</h2>
 
-<p>Enter the code: {{ .Token }}</p>`
+<p>Enter the code: {{ .Token }}</p>
+
+<p>If you didn't request a confirmation code, don't worry. You can safely ignore this email.</p>
+<br />
+<p><a href="{{ .SiteURL }}">evercraft.ai</a>, a version control tool<br/>easier than ever for engineers.</p>
+`
 
 // ValidateEmail returns nil if the email is valid,
 // otherwise an error indicating the reason it is invalid
