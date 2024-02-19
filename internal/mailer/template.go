@@ -46,6 +46,8 @@ const defaultConfirmationMail = `<h2>Confirm your email</h2>
 
 <p><a href="{{ .ConfirmationURL }}">Click here to confirm your email address</a></p>
 
+<p>Enter the code: {{ .Token }}</p>
+
 <p>If you didn't request a confirm, don't worry. You can safely ignore this email.</p>
 <br />
 <p><img width="80px" src="https://www.evercraft.ai/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.ai</a>, a version control tool<br />easier than ever for engineers.</p>
@@ -54,6 +56,8 @@ const defaultConfirmationMail = `<h2>Confirm your email</h2>
 const defaultRecoveryMail = `<h2>Reset your EverCraft password</h2>
 
 <p><a href="{{ .ConfirmationURL }}">Click here to reset your password</a></p>
+
+<p>Enter the code: {{ .Token }}</p>
 
 <p>If you didn't request a reset, don't worry. You can safely ignore this email.</p>
 <br />
@@ -72,6 +76,8 @@ const defaultMagicLinkMail = `<h2>Magic Link for your EverCraft account</h2>
 const defaultEmailChangeMail = `<h2>Confirm email address change</h2>
 
 <p><a href="{{ .ConfirmationURL }}">Click here to change email address</a></p>
+
+<p>Enter the code: {{ .Token }}</p>
 
 <p>If you didn't request a email change, don't worry. You can safely ignore this email.</p>
 <br />
