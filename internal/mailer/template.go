@@ -39,7 +39,7 @@ const defaultInviteMail = `<h2>You have been invited to EverCraft</h2>
 <p><a href="{{ .ConfirmationURL }}">Accept the invite</a></p>
 
 <br />
-<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, a version control tool<br />easier than ever for engineers.</p>
+<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, file history management<br />never been so easy before.</p>
 `
 
 const defaultConfirmationMail = `<h2>Confirm your email</h2>
@@ -48,7 +48,7 @@ const defaultConfirmationMail = `<h2>Confirm your email</h2>
 
 <p>If you didn't request a confirm, don't worry. You can safely ignore this email.</p>
 <br />
-<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, a version control tool<br />easier than ever for engineers.</p>
+<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, file history management<br />never been so easy before.</p>
 `
 
 const defaultRecoveryMail = `<h2>Reset your EverCraft password</h2>
@@ -57,7 +57,7 @@ const defaultRecoveryMail = `<h2>Reset your EverCraft password</h2>
 
 <p>If you didn't request a reset, don't worry. You can safely ignore this email.</p>
 <br />
-<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, a version control tool<br />easier than ever for engineers.</p>
+<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, file history management<br />never been so easy before.</p>
 `
 
 const defaultMagicLinkMail = `<h2>Magic Link for your EverCraft account</h2>
@@ -66,7 +66,7 @@ const defaultMagicLinkMail = `<h2>Magic Link for your EverCraft account</h2>
 
 <p>If you didn't request a magic link, don't worry. You can safely ignore this email.</p>
 <br />
-<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, a version control tool<br />easier than ever for engineers.</p>
+<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, file history management<br />never been so easy before.</p>
 `
 
 const defaultEmailChangeMail = `<h2>Confirm email address change</h2>
@@ -75,7 +75,7 @@ const defaultEmailChangeMail = `<h2>Confirm email address change</h2>
 
 <p>If you didn't request a email change, don't worry. You can safely ignore this email.</p>
 <br />
-<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, a version control tool<br />easier than ever for engineers.</p>
+<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, file history management<br />never been so easy before.</p>
 `
 
 const defaultReauthenticateMail = `<h2>Confirm reauthentication</h2>
@@ -84,7 +84,7 @@ const defaultReauthenticateMail = `<h2>Confirm reauthentication</h2>
 
 <p>If you didn't request a confirmation code, don't worry. You can safely ignore this email.</p>
 <br />
-<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, a version control tool<br />easier than ever for engineers.</p>
+<p><img width="80px" src="https://en.evercraft.co/_next/static/media/logo-en.4b1aa52e.png" /><br/><a href="{{ .SiteURL }}">evercraft.co</a>, file history management<br />never been so easy before.</p>
 `
 
 // ValidateEmail returns nil if the email is valid,
